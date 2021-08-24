@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_icons/simple_icons.dart';
 import 'constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ResultPage.dart';
@@ -12,13 +14,17 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 
-  TextEditingController _namecontroller = TextEditingController();
-  TextEditingController _descriptioncontroller = TextEditingController();
-  TextEditingController _emailcontroller = TextEditingController();
-  TextEditingController _linkedincontroller = TextEditingController();
-  TextEditingController _githubcontroller = TextEditingController();
-  TextEditingController _whatsappcontroller = TextEditingController();
-  TextEditingController _facebookcontroller = TextEditingController();
+
+  String? nm;
+  String? desc;
+  String? eml;
+  String? lkndin;
+  String? gthb;
+  String? whatsapp;
+  String? fb;
+  String? uwork;
+  String? fvr;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +52,9 @@ class _InputPageState extends State<InputPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      controller: _namecontroller,
+                      onChanged: (text){
+                        nm = text;
+                      },
                       decoration: InputDecoration(
                         labelText: 'Name',
                         labelStyle: kLabelStyle,
@@ -55,6 +63,7 @@ class _InputPageState extends State<InputPage> {
                         filled: true,
                         prefixIcon: Icon(FontAwesomeIcons.user),
                       ),
+                      keyboardType: TextInputType.name,
                     ),
                   ),
                   SizedBox(
@@ -63,7 +72,9 @@ class _InputPageState extends State<InputPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      controller: _descriptioncontroller,
+                      onChanged: (text){
+                        desc = text;
+                      },
                       decoration: InputDecoration(
                         labelText: 'Description',
                         labelStyle: kLabelStyle,
@@ -72,6 +83,8 @@ class _InputPageState extends State<InputPage> {
                         filled: true,
                         prefixIcon: Icon(FontAwesomeIcons.addressBook),
                       ),
+                      keyboardType: TextInputType.text,
+                      maxLines: 2,
                     ),
                   ),
                   SizedBox(
@@ -80,7 +93,9 @@ class _InputPageState extends State<InputPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      controller: _emailcontroller,
+                      onChanged: (text){
+                        eml = text;
+                      },
                       decoration: InputDecoration(
                         labelText: 'Email Address',
                         labelStyle: kLabelStyle,
@@ -89,6 +104,7 @@ class _InputPageState extends State<InputPage> {
                         filled: true,
                         prefixIcon: Icon(FontAwesomeIcons.envelope),
                       ),
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                   SizedBox(
@@ -97,7 +113,9 @@ class _InputPageState extends State<InputPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      controller: _linkedincontroller,
+                      onChanged: (text){
+                        lkndin = text;
+                      },
                       decoration: InputDecoration(
                         labelText: 'LinkedIn Link',
                         labelStyle: kLabelStyle,
@@ -106,6 +124,7 @@ class _InputPageState extends State<InputPage> {
                         filled: true,
                         prefixIcon: Icon(FontAwesomeIcons.linkedinIn),
                       ),
+                      keyboardType: TextInputType.url,
                     ),
                   ),
                   SizedBox(
@@ -114,7 +133,9 @@ class _InputPageState extends State<InputPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      controller: _whatsappcontroller,
+                      onChanged: (text){
+                        whatsapp = text;
+                      },
                       decoration: InputDecoration(
                         labelText: 'WhatsApp Number',
                         labelStyle: kLabelStyle,
@@ -123,6 +144,7 @@ class _InputPageState extends State<InputPage> {
                         filled: true,
                         prefixIcon: Icon(FontAwesomeIcons.whatsapp),
                       ),
+                      keyboardType: TextInputType.phone,
                     ),
                   ),
                   SizedBox(
@@ -131,7 +153,9 @@ class _InputPageState extends State<InputPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      controller: _facebookcontroller,
+                      onChanged: (text){
+                        fb = text;
+                      },
                       decoration: InputDecoration(
                         labelText: 'Facebook Link',
                         labelStyle: kLabelStyle,
@@ -140,6 +164,7 @@ class _InputPageState extends State<InputPage> {
                         filled: true,
                         prefixIcon: Icon(FontAwesomeIcons.facebook),
                       ),
+                      keyboardType: TextInputType.url,
                     ),
                   ),
                   SizedBox(
@@ -148,7 +173,9 @@ class _InputPageState extends State<InputPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      controller: _githubcontroller,
+                      onChanged: (text){
+                        gthb = text;
+                      },
                       decoration: InputDecoration(
                         labelText: 'Github Link',
                         labelStyle: kLabelStyle,
@@ -157,6 +184,47 @@ class _InputPageState extends State<InputPage> {
                         filled: true,
                         prefixIcon: Icon(FontAwesomeIcons.github),
                       ),
+                      keyboardType: TextInputType.url,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    child: TextField(
+                      onChanged: (text){
+                        uwork = text;
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Upwork Link',
+                        labelStyle: kLabelStyle,
+                        border: OutlineInputBorder(),
+                        fillColor: Colors.grey.shade600,
+                        filled: true,
+                        prefixIcon: Icon(SimpleIcons.upwork),
+                      ),
+                      keyboardType: TextInputType.url,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    child: TextField(
+                      onChanged: (text){
+                        fvr = text;
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Fiverr Link',
+                        labelStyle: kLabelStyle,
+                        border: OutlineInputBorder(),
+                        fillColor: Colors.grey.shade600,
+                        filled: true,
+                        prefixIcon: Icon(SimpleIcons.fiverr),
+                      ),
+                      keyboardType: TextInputType.url,
                     ),
                   ),
                   SizedBox(
@@ -164,7 +232,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                   TextButton(
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => FinalCard()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => FinalCard(name: nm.toString(), description: desc.toString(), emailurl: eml.toString(), upworkrurl: uwork.toString(), fiverrurl: fvr.toString())));
                     },
                     child: Text(
                       'Create',
@@ -180,4 +248,6 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
+// name: _namecontroller.toString(),description: _descriptioncontroller.toString(),emailurl: _emailcontroller.toString(), linkedinurl: _linkedincontroller.toString(), fburl: _facebookcontroller.toString(), githuburl: _githubcontroller.toString(), upworkrurl: _upworkcontroller.toString(), fiverrurl: _fiverrcontroller.toString(),
 
